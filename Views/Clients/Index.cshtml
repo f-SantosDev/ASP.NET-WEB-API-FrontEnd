@@ -1,0 +1,55 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model IEnumerable<ClientsViewModel>
+
+@{
+    ViewData["Title"] = "Client List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if(User.IsInRole("Admin"))
+{
+    <br />
+    <p>Wellcome, Admin!</p>
+    <br />
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var client in Model)
+        {
+            <tr>
+                <td>@client.ClientId</td>
+                <td>@client.Name</td>
+                <td>@client.Surname</td>
+                <td>@client.Email</td>
+                <td>@client.PhoneNumber</td>
+                <td>
+                    <a href="@Url.Action("Details", new {
+                        clientId = client.ClientId
+                    })">Details</a> |
+
+                    <a href="@Url.Action("Update", new {
+                        clientId = client.ClientId
+                    })">Update</a> |
+                    <a href="@Url.Action("Delete", new {
+                        clientId = client.ClientId
+                    })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">New Client</a>

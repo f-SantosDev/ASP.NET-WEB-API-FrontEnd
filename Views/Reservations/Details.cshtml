@@ -1,0 +1,66 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model ReservationsViewModel
+
+@{
+    ViewData["Title"] = "Reservation detail";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table w-50">
+    <tr>
+        <th>Reservation ID</th>
+        <td>@Model.ReservationId</td>
+    </tr>
+    <tr>
+        <th>Origin</th>
+        <td>@Model.Origin</td>
+    </tr>
+    <tr>
+        <th>Destination</th>
+        <td>@Model.Destination</td>
+    </tr>
+    <tr>
+        <th>Departure Date</th>
+        <td>@Model.DepartureDate.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Return Date</th>
+        <td>@Model.ReturnDate?.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Departure Time</th>
+        <td>@Model.DepartureTime.ToString(@"hh\:mm")</td>
+    </tr>
+    <tr>
+        <th>Return Time</th>
+        <td>@Model.ReturnTime?.ToString(@"hh\:mm")</td>
+    </tr>
+    <tr>
+        <th><br />Client data</th>
+    </tr>
+    <tr>
+        <th><br /></th>
+    </tr>
+    <tr>
+        <th>Client ID</th>
+        <td>@Model.ClientId</td>
+    </tr>
+    <tr>
+        <th>Full Name</th>
+        <td>@Model.Client.Name @Model.Client.Surname</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Client.Email</td>
+    </tr>
+    <tr>
+        <th>Phone Number</th>
+        <td>@Model.Client.PhoneNumber</td>
+    </tr>
+</table>
+
+<br />
+
+<a href="@Url.Action("Index")" class="btn btn-danger">Back</a>

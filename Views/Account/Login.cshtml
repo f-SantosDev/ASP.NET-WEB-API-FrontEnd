@@ -1,0 +1,33 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Login" method="post">
+    <div class="w-25">
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" type="email"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RememberMe">Remember Me</label>
+            <input asp-for="RememberMe" type="checkbox" />
+        </div>
+    </div>
+
+    <br />
+
+    <button class="btn btn-primary" type="submit">Login</button>
+    <a asp-action="Register" class="btn btn-success">Register</a>
+</form>

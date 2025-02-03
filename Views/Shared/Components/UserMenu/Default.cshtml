@@ -1,0 +1,33 @@
+﻿@*
+    define the header default menu 
+*@
+
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </li>
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-primary m-1" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-outline-primary m-1" asp-area="" asp-controller="Reservations" asp-action="Index">Reservations</a>
+        </li>
+
+        @if(User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="btn btn-success m-1" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+            </li>
+        }
+        
+        <li class="nav-item">
+            <a class="btn btn-danger m-1" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+        </li>
+    }
+</ul>

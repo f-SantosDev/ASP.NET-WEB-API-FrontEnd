@@ -1,0 +1,47 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register a new user";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Register" method="post">
+    <div class="w-25">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Surname">Surname</label>
+            <input asp-for="Surname" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        </div>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Register</button>
+    @if(User?.Identity?.IsAuthenticated ?? false)
+    {
+        <button asp-controller="Clients" asp-action="Index" class="btn btn-danger">Cancel</button>
+    }
+    else
+    {
+        <button asp-action="Login" class="btn btn-danger">Cancel</button>
+    }
+    
+</form>

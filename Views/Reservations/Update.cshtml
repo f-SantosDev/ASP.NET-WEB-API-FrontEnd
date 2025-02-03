@@ -1,0 +1,50 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model ReservationsViewModel
+
+@{
+    ViewData["Title"] = "Update Reservation";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Update" asp-route-reservationId="@Model.ReservationId" method="post">
+    <div class="form-group w-25">
+
+        <input asp-for="ReservationId" class="form-control" type="hidden" />
+
+        <div>
+            <label asp-for="Origin">Origin</label>
+            <input asp-for="Origin" class="form-control" type="text" />
+        </div>
+        <div>
+            <label asp-for="Destination">Destination</label>
+            <input asp-for="Destination" class="form-control" type="text" />
+        </div>
+        <div>
+            <label asp-for="DepartureDate">Departure Date</label>
+            <input asp-for="DepartureDate" class="form-control" type="date" />
+        </div>
+        <div>
+            <label asp-for="ReturnDate">Return Date</label>
+            <input asp-for="ReturnDate" class="form-control" type="date" />
+        </div>
+        <div>
+            <label asp-for="DepartureTime">Departure Time</label>
+            <input asp-for="DepartureTime" class="form-control" type="time" />
+        </div>
+        <div>
+            <label asp-for="ReturnTime">Return Time</label>
+            <input asp-for="ReturnTime" class="form-control" type="time" />
+        </div>
+        <div>
+            <label asp-for="ClientId">Client ID</label>
+            <input asp-for="ClientId" class="form-control" type="number" />
+        </div>
+    </div>
+
+    <br />
+
+    <button class="btn btn-primary" type="submit">Update</button>
+    <button asp-action="Index" class="btn btn-danger">Cancel</button>
+</form>

@@ -1,0 +1,35 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model ClientsViewModel
+
+@{
+    ViewData["Title"] = "New Client";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="w-25">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Surname">Surname</label>
+            <input asp-for="Surname" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber">Phone Number</label>
+            <input asp-for="PhoneNumber" type="text" class="form-control" />
+        </div>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <button asp-action="Index" class="btn btn-danger">Cancel</button>
+</form>

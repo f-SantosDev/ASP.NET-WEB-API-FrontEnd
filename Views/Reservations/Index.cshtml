@@ -1,0 +1,64 @@
+﻿@using Revisao_ASP.NET_Web_API_Front.Models.ViewModels;
+
+@model IEnumerable<ReservationsViewModel>
+
+@{
+    ViewData["Title"] = "Reservations List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <br />
+    <p>Wellcome, Admin!</p>
+    <br />
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Reservation ID</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Departure Date</th>
+            <th>Return Date</th>
+            <th>Departure Time</th>
+            <th>Return Time</th>
+            <th>Client ID</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.ReservationId</td>
+                <td>@reservation.Origin</td>
+                <td>@reservation.Destination</td>
+                <td>@reservation.DepartureDate.ToString("dd-MM-yyyy")</td>
+                <td>@reservation.ReturnDate?.ToString("dd-MM-yyyy")</td>
+                <td>@reservation.DepartureTime.ToString(@"hh\:mm")</td>
+                <td>@reservation.ReturnTime?.ToString(@"hh\:mm")</td>
+                <td>@reservation.ClientId</td>
+
+                <td>
+                    <a href="@Url.Action("Details", new {
+                        reservationId = reservation.ReservationId
+                    })">Details</a> |
+
+                    <a href="@Url.Action("Update", new {
+                        reservationId = reservation.ReservationId
+                    })">Update</a> |
+                    <a href="@Url.Action("Delete", new {
+                        reservationId = reservation.ReservationId
+                    })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<a href="@Url.Action("Create")" class="btn btn-primary">New Reservation</a>
